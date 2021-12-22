@@ -15,7 +15,6 @@ class App {
         this.express = express();
         this.port = port;
 
-        this.initialiseDatabaseConnection();
         this.initialiseMiddleware();
         this.initialiseControllers(controllers);
         this.initialiseErrorHandling();
