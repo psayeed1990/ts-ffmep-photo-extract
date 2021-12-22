@@ -1,0 +1,20 @@
+{
+  "name": "ts-ffmep-photo-extract",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psayeed1990/ts-ffmep-photo-extract.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/psayeed1990/ts-ffmep-photo-extract/issues"
+  },
+  "homepage": "https://github.com/psayeed1990/ts-ffmep-photo-extract#readme"
+}
