@@ -1,20 +1,28 @@
 {
-  "name": "ts-ffmep-photo-extract",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/psayeed1990/ts-ffmep-photo-extract.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/psayeed1990/ts-ffmep-photo-extract/issues"
-  },
-  "homepage": "https://github.com/psayeed1990/ts-ffmep-photo-extract#readme"
+    "name": "ts-ffmep-photo-extract",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node dist/index.js",
+        "dev": "tsc-watch --onSuccess \"node ./dist/index.js\"",
+        "build": "tsc",
+        "postinstall": "npm run build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/psayeed1990/ts-ffmep-photo-extract.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/psayeed1990/ts-ffmep-photo-extract/issues"
+    },
+    "homepage": "https://github.com/psayeed1990/ts-ffmep-photo-extract#readme",
+    "_moduleAliases": {
+        "@/resources": "dist/resources",
+        "@/utils": "dist/utils",
+        "@/middlewares": "dist/middlewares"
+    }
 }
