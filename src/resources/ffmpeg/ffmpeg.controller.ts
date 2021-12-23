@@ -25,16 +25,17 @@ class FFMPEGController implements Controller {
         next: NextFunction
     ): Promise<Response | void> => {
         try {
-            const { title, body } = req.body;
+            const timestamp = Number(req.query.timestamp);
+            const url = String(req.query.url);
 
             const photo = await new FFMPEGService().extractPhotoFromVideo(
-                title,
-                body
+                timestamp,
+                url
             );
 
             res.status(201).json({ photo });
         } catch (error) {
-            next(new HttpException(400, 'Cannot create post'));
+            next(new HttpException(400, 'Cannot take screenshot'));
         }
     };
 }

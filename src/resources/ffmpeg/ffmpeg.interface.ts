@@ -1,4 +1,4 @@
 export default interface Photo {
-    title: string;
-    body: string;
+    timestamp: number;
+    url: string;
 }

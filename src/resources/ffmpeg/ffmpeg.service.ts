@@ -5,13 +5,13 @@ class FFMPEGService {
      * Create a new post
      */
     public async extractPhotoFromVideo(
-        title: string,
-        body: string
+        timestamp: number,
+        url: string
     ): Promise<Photo> {
         try {
             return {
-                title,
-                body,
+                timestamp,
+                url,
             };
         } catch (error) {
             throw new Error('Unable to create post');
