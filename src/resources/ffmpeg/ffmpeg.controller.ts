@@ -2,6 +2,7 @@ import { Router, Request, Response, NextFunction } from 'express';
 import Controller from '@/utils/interfaces/controller.interface';
 import HttpException from '@/utils/exceptions/http.exception';
 import FFMPEGService from '@/resources/ffmpeg/ffmpeg.service';
+import getErrorMessage from '@/utils/exceptions/message.exception';
 
 class FFMPEGController implements Controller {
     public path = '/ffmpeg/image';
@@ -35,7 +36,7 @@ class FFMPEGController implements Controller {
 
             res.status(201).json({ photo });
         } catch (error) {
-            next(new HttpException(400, 'Cannot take screenshot'));
+            next(new HttpException(400, getErrorMessage(error)));
         }
     };
 }
