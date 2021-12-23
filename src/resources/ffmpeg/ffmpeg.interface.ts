@@ -1,4 +1,3 @@
 export default interface Photo {
-    timestamp: number;
-    url: string;
+    data: string;
 }

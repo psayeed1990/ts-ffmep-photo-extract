@@ -1,6 +1,7 @@
 import Photo from '@/resources/ffmpeg/ffmpeg.interface';
-import HttpException from '@/utils/exceptions/http.exception';
-import ffmpeg from 'ffmpeg';
+import util from 'util';
+import { exec } from 'child_process';
+const cmd = util.promisify(exec);
 
 class FFMPEGService {
     /**
@@ -10,25 +11,19 @@ class FFMPEGService {
         timestamp: number,
         url: string
     ): Promise<Photo> {
-        // Create a new ffmpeg instance
-        console.log('hi');
-        new ffmpeg(url, (err, video) => {
-            if (err) {
-                console.log('hi');
+        //extract photo from video at 'timestamp' as png base64 from 'url' using cmd
+        const { stdout, stderr } = await cmd(
+            //ffmpeg command for base64 png
+            `ffmpeg -ss ${timestamp} -i ${url} -vframes 1 -f image2 -y -vcodec png - | base64 -w 0`
+        );
 
-                throw new Error(err.message);
-            }
-            // Get the duration of the video
-            console.log('hi');
+        if (stderr) {
+            console.log('stderr:-', stderr);
+        }
 
-            console.log(video);
-        });
-
-        //extract photo from video at timestamp
-
+        //send the image to the client
         return {
-            timestamp,
-            url,
+            data: stdout,
         };
     }
 }

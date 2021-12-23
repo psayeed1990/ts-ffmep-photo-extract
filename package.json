@@ -49,6 +49,7 @@
         "express": "^4.17.2",
         "express-rate-limit": "^5.5.1",
         "ffmpeg": "^0.0.4",
+        "fluent-ffmpeg": "^2.1.2",
         "helmet": "^4.6.0",
         "hpp": "^0.2.3",
         "module-alias": "^2.2.2",
