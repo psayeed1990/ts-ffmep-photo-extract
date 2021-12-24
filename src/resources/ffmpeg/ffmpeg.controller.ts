@@ -3,6 +3,8 @@ import Controller from '@/utils/interfaces/controller.interface';
 import HttpException from '@/utils/exceptions/http.exception';
 import FFMPEGService from '@/resources/ffmpeg/ffmpeg.service';
 import getErrorMessage from '@/utils/exceptions/message.exception';
+import joi from 'joi';
+import VframeSchema from '@/utils/definitions/joi/vframes.definitions';
 
 class FFMPEGController implements Controller {
     public path = '/ffmpeg/image';
@@ -13,11 +15,7 @@ class FFMPEGController implements Controller {
     }
 
     private initialiseRoutes(): void {
-        this.router.get(
-            `${this.path}`,
-            //validationMiddleware(validate.create),
-            this.extractPhoto
-        );
+        this.router.get(`${this.path}`, this.extractPhoto);
     }
 
     private extractPhoto = async (
@@ -29,6 +27,13 @@ class FFMPEGController implements Controller {
             const timestamp = Number(req.query.timestamp);
             const url = String(req.query.url);
 
+            //validate input with joi
+            await VframeSchema.validateAsync({
+                timestamp,
+                url,
+            });
+
+            //extract photo function call
             const photo = await new FFMPEGService().extractPhotoFromVideo(
                 timestamp,
                 url

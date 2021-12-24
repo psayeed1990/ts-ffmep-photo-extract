@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import 'module-alias/register';
-import validateEnv from '@/utils/validate.env';
+import validateEnv from '@/utils/validations/validate.env';
 import App from './app';
 import FFMPEGController from '@/resources/ffmpeg/ffmpeg.controller';
 

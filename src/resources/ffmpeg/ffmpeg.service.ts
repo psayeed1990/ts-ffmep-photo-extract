@@ -5,7 +5,7 @@ const cmd = util.promisify(exec);
 
 class FFMPEGService {
     /**
-     * Create a new post
+     * Extracts a photo from a video
      */
     public async extractPhotoFromVideo(
         timestamp: number,
