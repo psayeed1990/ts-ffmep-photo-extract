@@ -1,20 +1,18 @@
 FROM node:16.13.0 as base
 
+RUN apt-get -y update
+RUN apt-get install -y ffmpeg
+
+WORKDIR /app
+
 # Add package file
 COPY package*.json ./
 
-# Install deps
-RUN npm i
-
-# Copy source
-COPY . .
-
-# Build dist
-RUN npm run build
+RUN npm i -g ts-node
 
 FROM base as test
-RUN npm ci
 COPY . .
+RUN npm run build
 RUN npm run test
 
 
@@ -23,8 +21,8 @@ EXPOSE 8070
 
 # Start production image build
 FROM base as dev
-RUN npm ci --development
 COPY . .
-CMD [ "npm", "run", "dev" ]
+RUN npm run build
+RUN npm run dev
 
 
