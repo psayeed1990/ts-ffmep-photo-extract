@@ -9,6 +9,8 @@ WORKDIR /app
 COPY package*.json ./
 
 RUN npm i -g ts-node
+RUN npm i -g typescript
+RUN npm i
 
 FROM base as test
 COPY . .
