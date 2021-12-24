@@ -6,6 +6,6 @@ import FFMPEGController from '@/resources/ffmpeg/ffmpeg.controller';
 
 validateEnv();
 
-const app = new App([new FFMPEGController()], Number(process.env.PORT));
+export const app = new App([new FFMPEGController()], Number(process.env.PORT));
 
 app.listen();

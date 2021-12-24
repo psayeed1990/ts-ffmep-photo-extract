@@ -3,7 +3,6 @@ import Controller from '@/utils/interfaces/controller.interface';
 import HttpException from '@/utils/exceptions/http.exception';
 import FFMPEGService from '@/resources/ffmpeg/ffmpeg.service';
 import getErrorMessage from '@/utils/exceptions/message.exception';
-import joi from 'joi';
 import VframeSchema from '@/utils/definitions/joi/vframes.definitions';
 
 class FFMPEGController implements Controller {
@@ -39,7 +38,7 @@ class FFMPEGController implements Controller {
                 url
             );
 
-            res.status(201).json({ photo });
+            return res.status(201).json({ photo });
         } catch (error) {
             next(new HttpException(400, getErrorMessage(error)));
         }
