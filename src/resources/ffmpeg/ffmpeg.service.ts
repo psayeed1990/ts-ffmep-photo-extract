@@ -17,9 +17,10 @@ class FFMPEGService {
             `ffmpeg -ss ${timestamp} -i ${url} -vframes 1 -f image2 -y -vcodec png - | base64 -w 0`
         );
 
-        if (stderr) {
-            console.log('stderr:-', stderr);
-        }
+        //hide standard error if any for just now
+        // if (stderr) {
+        //     console.log('stderr:-', stderr);
+        // }
 
         //send the image to the client
         return {

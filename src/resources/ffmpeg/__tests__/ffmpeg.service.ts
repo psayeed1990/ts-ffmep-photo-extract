@@ -5,18 +5,36 @@
 import FFMPEGService from '@/resources/ffmpeg/ffmpeg.service';
 import Photo from '@/resources/ffmpeg/ffmpeg.interface';
 
-const ffmpegService = new FFMPEGService();
+//call the service in a function
+const photoExtractTestFunction = async () => {
+    const ffmpegService = new FFMPEGService();
+    const timestamp = 0;
+    const url =
+        'https://public-anios-dev.s3.ap-southeast-1.amazonaws.com/jungle_3s.mp4';
+    const photo: Photo = await ffmpegService.extractPhotoFromVideo(
+        timestamp,
+        url
+    );
+    return photo;
+};
 
 describe('FFMPEGService', () => {
-    it('should extract a photo from a video', async () => {
-        const timestamp = 0;
-        const url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-        const photo: Photo = await ffmpegService.extractPhotoFromVideo(
-            timestamp,
-            url
-        );
-        expect(photo.data).toBe('string');
+    //test photo data to be string
+
+    it('Extracted photo should be a string', async () => {
+        photoExtractTestFunction().then((photo) => {
+            expect(typeof photo.data).toEqual('string');
+        });
     });
+
+    //test photo data to be string instance and not empty string or null or undefined
+    // it('Extracted photo should not be a empty string ', async () => {
+    //     //test photo data to be a string instance
+    //     //pexpect(photo.data).toBeInstanceOf(String);
+    //     //test photo data to be a string instance and not empty string or null or undefined
+    //     expect(photo.data).not.toEqual('');
+    //     expect(photo.data).not.toEqual(' ');
+    // });
 });
 
 export default FFMPEGService;
