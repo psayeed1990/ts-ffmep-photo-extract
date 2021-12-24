@@ -5,26 +5,22 @@ RUN apt-get install -y ffmpeg
 
 WORKDIR /app
 
+
+# Expose port 8070
+EXPOSE 8070
+
 # Add package file
 COPY package*.json ./
 
 RUN npm i -g ts-node
 RUN npm i -g typescript
 RUN npm i
+COPY . .
+
+FROM base as dev
+RUN npm run dev
 
 FROM base as test
-COPY . .
-RUN npm run build
 RUN npm run test
-
-
-# Expose port 8070
-EXPOSE 8070
-
-# Start production image build
-FROM base as dev
-COPY . .
-RUN npm run build
-RUN npm run dev
 
 

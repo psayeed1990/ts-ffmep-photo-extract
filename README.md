@@ -18,5 +18,11 @@ http://localhost:8070/ffmpeg/image?timestamp=2&url=https://public-anios-dev.s3.a
 <h3>Start dev server</h2>
 <code>npm run dev</code>
 
+<h3>Docker build</h3>
+<code>docker build -t ffmpeg-photo-extract-from-video .</code>
+
 <h3>Docker run</h3>
-<code>docker run -p 8070:8070 -d --name ffmpeg-photo-extract-from-video -e PORT=8070 -e NODE_ENV=development ./</code>
+<code>docker run -p 8070:8070 -d --name container_name ffmpeg-photo-extract-from-video -e PORT=8070 -e NODE_ENV=development</code>
+
+If doesn't work, try to run:
+<code>docker build .</code>

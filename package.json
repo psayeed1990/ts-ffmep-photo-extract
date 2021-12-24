@@ -7,7 +7,6 @@
         "start": "node dist/index.js",
         "dev": "tsc-watch --onSuccess \"node ./dist/index.js\"",
         "build": "tsc",
-        "postinstall": "npm run build",
         "test:unit": "ENV_FILE=./config/.env.test jest --coverage --verbose --watchAll"
     },
     "repository": {
