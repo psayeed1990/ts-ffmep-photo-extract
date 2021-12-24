@@ -26,3 +26,5 @@ http://localhost:8070/ffmpeg/image?timestamp=2&url=https://public-anios-dev.s3.a
 
 If doesn't work, try to run:
 <code>docker build .</code>
+
+<h2>FFMPEG functions and tests written in /src/resources/ffmpeg/ </h2>
